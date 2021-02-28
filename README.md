@@ -1,6 +1,6 @@
 # Deploy hello world app to k8s cluster provisioned by terraform
 
-## Build app
+## BUILD APP
 
 I took flask framework and put everything in Docker container. I used github action for automate build process and push the image to target registry: `nikitinay/helloworld`
 
@@ -39,11 +39,11 @@ running "unix_signal:15 gracefully_kill_them_all" (master-start)...
 </p>
 </details>
 
-## AWS EKS Cluster provisioning
+## AWS EKS CLUSTER PROVISIONING
 
 I used simple `module` For EKS cluster provisioning. Specification of the cluster located in `./terraform/variables.tf`
 
-## Deploy image
+## DEPLOY IMAGE to CLUSTER
 
 I decided to separate cluster provisioining and application deployment. I described deployment in yaml files in `k8sdeploy` folder. Also the task required https, so I generated self signed cert.
 
@@ -62,7 +62,7 @@ curl jq kubectl terraform openssl aws-iam-authenticator
 
 For deploy everything you need to run `./deploy.sh`
 
-## Check
+## CHECK
 ```
 $ k get svc -n ingress-nginx
 NAME                                 TYPE           CLUSTER-IP       EXTERNAL-IP                                                                     PORT(S)                      AGE
@@ -100,7 +100,7 @@ ingress.extensions/helloworld-net created
 </p>
 </details>
 
-## Destroy environment
+## DESTROY RESOURCES
 
 ```
 kubectl delete -f k8sdeploy/
