@@ -1,11 +1,17 @@
-# Deploy hello world app to k8s cluster provisioned by terraform
+# TASKS
+
+- [x] The app should be reachable only via HTTPS and/or automatic redirect to HTTPS.
+- [x] The app should route through nginx and/or uWSGI (or node, if preferred).
+- [x] The app should be running as a non-privileged user.
+- [x] app/docker container should be automatically restarted if crashes or is killed.
+- [x] app's logs should be captured to /var/log/app.log 
+- Timezone should be in UTC 
 
 ## BUILD APP
 
 I took flask framework and put everything in Docker container. I used github action for automate build process and push the image to target registry: `nikitinay/helloworld`
 
-
-<details><summary>The app is running under nginx user and logs captured to `/var/log/app.log`</summary>
+<details><summary>The app is running under nginx user via supervisor and logs captured to `/var/log/app.log`</summary>
 <p>
 
 ```
