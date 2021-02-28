@@ -4,7 +4,7 @@
 - [x] The app should route through nginx and/or uWSGI (or node, if preferred).
 - [x] The app should be running as a non-privileged user.
 - [x] App/docker container should be automatically restarted if crashes or is killed.
-- [x] app's logs should be captured to /var/log/app.log 
+- [x] App's logs should be captured to /var/log/app.log 
 - [x] Timezone should be in UTC 
 
 ## BUILD APP
