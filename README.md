@@ -73,7 +73,7 @@ For deploy everything you need to run `./deploy.sh`
 $ k get svc -n ingress-nginx
 NAME                                 TYPE           CLUSTER-IP       EXTERNAL-IP                                                                     PORT(S)                      AGE
 ingress-nginx-controller             LoadBalancer   172.20.211.110   a14594a7395fc4b82837dc1a44e6df22-a468a56e15eb794e.elb.eu-west-2.amazonaws.com   80:30891/TCP,443:30947/TCP   20m
-ingress-nginx-controller-admission   ClusterIP      172.20.162.116    <none>                                                                         443/TCP                      20m
+ingress-nginx-controller-admission   ClusterIP      172.20.162.116   <none>                                                                          443/TCP                      20m
 
 $ curl -H "Host: helloworld.net" -k https://a14594a7395fc4b82837dc1a44e6df22-a468a56e15eb794e.elb.eu-west-2.amazonaws.com
 Hello, World!
