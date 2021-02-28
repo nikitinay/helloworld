@@ -1,0 +1,42 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths-ignore:
+      - '**/README.md'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        image:
+          - name: python3.8-alpine
+            python_version: "3.8"
+      fail-fast: true
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+
+      - name: Install Dependencies
+        run: python3.7 -m pip install docker
+
+      - name: Deploy Image
+        run: docker build -t nikitinay/helloworld ./build
+        env:
+          NAME: ${{ matrix.image.name }}
+          PYTHON_VERSION: ${{ matrix.image.python_version }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Publish main image
+        run: | 
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push nikitinay/helloworld

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  selector:
+    matchLabels:
+        app: helloworld
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: "platform.isolation/nodegroup"
+                      operator: In
+                      values:
+                        - "helloworld"
+      tolerations:
+        - key: helloworld
+          operator: Equal
+          value: "true"
+      containers:
+      - name: helloworld
+        image: "nikitinay/helloworld"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "125m"
+          limits:
+            memory: "1500Mi"
+            cpu: "1"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
