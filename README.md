@@ -49,7 +49,7 @@ running "unix_signal:15 gracefully_kill_them_all" (master-start)...
 
 I used simple `module` For EKS cluster provisioning. Specification of the cluster located in `./terraform/variables.tf`
 
-## DEPLOY IMAGE TO THE CLUSTER
+## DEPLOY THE IMAGE TO THE CLUSTER
 
 I decided to separate cluster provisioining and application deployment. I described deployment in `k8sdeploy` folder. Also the task required https, so I generated self signed cert.
 
