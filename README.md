@@ -51,7 +51,7 @@ I used simple `module` For EKS cluster provisioning. Specification of the cluste
 
 ## DEPLOY IMAGE TO THE CLUSTER
 
-I decided to separate cluster provisioining and application deployment. I described deployment in yaml files in `k8sdeploy` folder. Also the task required https, so I generated self signed cert.
+I decided to separate cluster provisioining and application deployment. I described deployment in `k8sdeploy` folder. Also the task required https, so I generated self signed cert.
 
 Before run specify AWS credentials
 
